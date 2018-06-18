@@ -1,0 +1,31 @@
+1529329017998	geckodriver	INFO	geckodriver 0.21.0
+1529329018037	geckodriver	INFO	Listening on 127.0.0.1:50967
+1529329021059	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Aydyn\\AppData\\Local\\Temp\\rust_mozprofile.i7o33aoBKqPJ"
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+1529329022872	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+1529329025364	Marionette	INFO	Listening on port 50975
+1529329025506	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+[Child 1700, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1700, Ch*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1529329041032	geckodriver	INFO	geckodriver 0.21.0
+1529329041047	geckodriver	INFO	Listening on 127.0.0.1:51013
+1529329044037	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Aydyn\\AppData\\Local\\Temp\\rust_mozprofile.tzw3OXrnLgw1"
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+1529329045014	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+1529329046804	Marionette	INFO	Listening on port 51021
+1529329046834	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Aydyn\AppData\Local\openvr\openvrpaths.vrpath
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
