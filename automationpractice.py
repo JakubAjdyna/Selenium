@@ -7,18 +7,25 @@ driver = webdriver.Chrome()
 driver.maximize_window()
 
 def Login():
+    #going to login page
     driver.find_element_by_class_name("login").click()
+    #entering email
     elem = driver.find_element_by_id("email")
     elem.send_keys("aydyn@wp.pl")
+    #entering password
     elem = driver.find_element_by_id("passwd")
     elem.send_keys("Password1#")
+    #loging in
     driver.find_element_by_name("SubmitLogin").click()
 
 def Logout():
+    #loging out
     driver.find_element_by_class_name("logout").click()
     time.sleep(3)
 
 def OrderHistory():
+    #going to account page
+    driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[1]/a').click()
     
 def OrderDetails():
@@ -42,6 +49,7 @@ def CreditSlip():
     time.sleep(3)
 
 def UpdateAddress():
+    #going to account page
     driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div[1]/div/div/ul/li[9]/a[1]').click()
@@ -51,13 +59,18 @@ def UpdateAddress():
     driver.find_element_by_name('submitAddress').click()
 
 def AddAndDeleteAddress():
+    #going to account page
     driver.find_element_by_class_name('account').click()
+    #going to addressess page
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
+    #going to new address page
     driver.find_element_by_xpath('//*[@id="center_column"]/div[2]/a').click()
+    #entering new address data
     elem = driver.find_element_by_id('address1')
     elem.send_keys('Testing St. 1/99')
     elem = driver.find_element_by_id('city')
     elem.send_keys('Testigo')
+    #selecting state from dropdown menu
     driver.find_element_by_xpath('//*[@id="id_state"]/option[6]').click()
     elem = driver.find_element_by_id('postcode')
     elem.send_keys('00000')
@@ -65,13 +78,16 @@ def AddAndDeleteAddress():
     elem.send_keys('+1555555555')
     elem = driver.find_element_by_id('phone_mobile')
     elem.send_keys('+1555555555')
+
     elem = driver.find_element_by_id('other')
     elem.send_keys('Test')
     elem = driver.find_element_by_name('alias')
     elem.clear()
     elem.send_keys('Test address')
     driver.find_element_by_id('submitAddress').click()
+    #deleting new address
     driver.find_element_by_xpath('//*[@id="center_column"]/div[1]/div/div[2]/ul/li[9]/a[2]/span').click()
+    #confirming delete on alert popup
     alert = driver.switch_to_alert()
     alert.accept()
 
@@ -116,7 +132,7 @@ def UpdatePersonalInfo():
     elem = driver.find_element_by_id('lastname')
     elem.clear()
     elem.send_keys('Tester')  
-    #changing date of birth
+    #reverting date of birth change
     driver.find_element_by_xpath('//*[@id="days"]/option[2]').click()
     driver.find_element_by_xpath('//*[@id="months"]/option[2]').click()
     driver.find_element_by_xpath('//*[@id="years"]/option[30]').click()
@@ -127,7 +143,7 @@ def UpdatePersonalInfo():
     elem.send_keys('Password1#')
     elem = driver.find_element_by_name('confirmation')
     elem.send_keys('Password1#')
-    #signing out for mail subscription
+    #mail subscription sign out
     driver.find_element_by_name('newsletter').click()
     driver.find_element_by_name('optin').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/form/fieldset/div[11]/button').click()
@@ -135,13 +151,13 @@ def UpdatePersonalInfo():
 url = "http://automationpractice.com/index.php"
 driver.get(url)
 Login()
-#OrderHistory()
-#OrderDetails()
-#OrderMessage()
-#OrderInvoice()
-#CreditSlip()
-#UpdateAddress()
-#AddAndDeleteAddress()
+OrderHistory()
+OrderDetails()
+OrderMessage()
+OrderInvoice()
+CreditSlip()
+UpdateAddress()
+AddAndDeleteAddress()
 UpdatePersonalInfo()
 Logout()
 driver.close()
