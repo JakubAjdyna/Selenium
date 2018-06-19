@@ -16,6 +16,7 @@ def Login():
 
 def Logout():
     driver.find_element_by_class_name("logout").click()
+    time.sleep(3)
 
 def OrderHistory():
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[1]/a').click()
@@ -35,6 +36,21 @@ def OrderMessage():
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/div/button').click()
     time.sleep(3)
 
+def CreditSlip():
+    driver.find_element_by_class_name('account').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[2]/a').click()
+    time.sleep(3)
+
+def UpdateAddress():
+    driver.find_element_by_class_name('account').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div[1]/div/div/ul/li[9]/a[1]').click()
+    elem = driver.find_element_by_name("company")
+    elem.clear()
+    elem.send_keys("Test")
+    driver.find_element_by_name('submitAddress').click()
+
+
 url = "http://automationpractice.com/index.php"
 driver.get(url)
 Login()
@@ -42,5 +58,7 @@ OrderHistory()
 OrderDetails()
 OrderMessage()
 OrderInvoice()
+CreditSlip()
+UpdateAddress()
 Logout()
 driver.close()
