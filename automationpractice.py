@@ -50,7 +50,7 @@ def UpdateAddress():
     elem.send_keys("Test")
     driver.find_element_by_name('submitAddress').click()
 
-def AddAddress():
+def AddAndDeleteAddress():
     driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div[2]/a').click()
@@ -75,7 +75,30 @@ def AddAddress():
     alert = driver.switch_to_alert()
     alert.accept()
 
-
+def UpdatePersonalInfo():
+    driver.find_element_by_class_name('account').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[4]/a').click()
+    elem = driver.find_element_by_name('old_passwd')
+    elem.send_keys('Password1#')
+    elem = driver.find_element_by_name('passwd')
+    elem.send_keys('Password#1')
+    elem = driver.find_element_by_name('confirmation')
+    elem.send_keys('Password#1')
+    driver.find_element_by_name('newsletter').click()
+    driver.find_element_by_name('optin').click() 
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/form/fieldset/div[11]/button').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/ul/li[1]/a').click()    
+    driver.find_element_by_class_name('account').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[4]/a').click()
+    elem = driver.find_element_by_name('old_passwd')
+    elem.send_keys('Password#1')
+    elem = driver.find_element_by_name('passwd')
+    elem.send_keys('Password1#')
+    elem = driver.find_element_by_name('confirmation')
+    elem.send_keys('Password1#')
+    driver.find_element_by_name('newsletter').click()
+    driver.find_element_by_name('optin').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/form/fieldset/div[11]/button').click()
 
 url = "http://automationpractice.com/index.php"
 driver.get(url)
@@ -86,6 +109,7 @@ OrderMessage()
 OrderInvoice()
 CreditSlip()
 UpdateAddress()
-AddAddress()
+AddAndDeleteAddress()
+UpdatePersonalInfo()
 Logout()
 driver.close()
