@@ -3,8 +3,8 @@ My sample tests written in Selenium Python
 
 
 ## Requirements
-Python 
-Selenium `pip install selenium`
+Python  
+Selenium `pip install selenium`  
 Chromedriver `driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")`
 
 

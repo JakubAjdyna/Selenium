@@ -6,8 +6,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
-#driver.maximize_window()
+driver = webdriver.Chrome()
+#driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+driver.maximize_window()
 wait = WebDriverWait(driver,10)
 
 def Login():
@@ -157,13 +158,14 @@ def Wishlist():
     driver.find_element_by_xpath('//*[@id="best-sellers_block_right"]/div/ul/li[1]/a/img').click()
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="wishlist_button"]'))
     driver.find_element_by_xpath('//*[@id="wishlist_button"]').click()
-    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a'))
-    driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a').click()
+    wait.until(lambda driver: driver.find_element_by_class_name('fancybox-close'))
+    driver.find_element_by_class_name('fancybox-close').click()
     #back to wishlist
-    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a'))
+    #element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="header"]/div[2]/div/div/nav/div[1]/a')))
+    time.sleep(3)
     driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
-    #view details    details = //*[@id="wishlist_4246"]/td[1]/a   delete = //*[@id="wishlist_4246"]/td[6]/a/i
+    #view details
     driver.find_element_by_link_text('Test wishlist').click()
     #change quantity
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="quantity_7_34"]'))
@@ -181,9 +183,9 @@ def Wishlist():
     element.send_keys('test@test.pl')
     driver.find_element_by_xpath('//*[@id="block-order-detail"]/div/form/fieldset/div[11]/button').click()
     #delete wishlist
-    wait.until(lambda driver: driver.find_element_by_class_name('icon-remove')
-    content = driver.find_element_by_class_name("icon-remove")
-    content.click()
+    #wait.until(lambda driver: driver.find_element_by_class_name('icon-remove')
+    driver.find_element_by_class_name("icon-remove").click()
+    wait.until(EC.alert_is_present)
     alert = driver.switch_to_alert()
     alert.accept
 
