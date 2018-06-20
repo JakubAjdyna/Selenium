@@ -26,20 +26,17 @@ def Login():
 def Logout():
     #loging out
     driver.find_element_by_class_name("logout").click()
-    time.sleep(5)
+    time.sleep(3)
 
-def OrderHistory():
+def OrderHistoryAndDetails():
     #going to account page
     driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[1]/a').click()
-    
-def OrderDetails():
+    #going to order details
     driver.find_element_by_xpath('//*[@id="order-list"]/tbody/tr[1]/td[7]/a[1]').click()
-
-def OrderInvoice():
+    #getting invoice
     driver.find_element_by_xpath('//*[@id="order-list"]/tbody/tr[1]/td[6]/a').click()
-
-def OrderMessage():
+    #sending order message
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]'))
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]').click()
     elem = driver.find_element_by_name('msgText')
@@ -67,11 +64,11 @@ def AddAndDeleteAddress():
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
     #going to new address page
     driver.find_element_by_xpath('//*[@id="center_column"]/div[2]/a').click()
+    #adding new address data
     elem = driver.find_element_by_id('address1')
     elem.send_keys('Testing St. 1/99')
     elem = driver.find_element_by_id('city')
     elem.send_keys('Testigo')
-    #selecting state from dropdown menu
     driver.find_element_by_xpath('//*[@id="id_state"]/option[6]').click()
     elem = driver.find_element_by_id('postcode')
     elem.send_keys('00000')
@@ -149,6 +146,8 @@ def UpdatePersonalInfo():
     driver.find_element_by_xpath('//*[@id="center_column"]/div/form/fieldset/div[11]/button').click()
 
 def Wishlist():
+    #go to wishlists
+    driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
     #add a new wishlist
     element = driver.find_element_by_xpath('//*[@id="name"]')
@@ -161,8 +160,7 @@ def Wishlist():
     wait.until(lambda driver: driver.find_element_by_class_name('fancybox-close'))
     driver.find_element_by_class_name('fancybox-close').click()
     #back to wishlist
-    #element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="header"]/div[2]/div/div/nav/div[1]/a')))
-    time.sleep(3)
+    time.sleep(1)
     driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
     #view details
@@ -183,11 +181,10 @@ def Wishlist():
     element.send_keys('test@test.pl')
     driver.find_element_by_xpath('//*[@id="block-order-detail"]/div/form/fieldset/div[11]/button').click()
     #delete wishlist
-    #wait.until(lambda driver: driver.find_element_by_class_name('icon-remove')
     driver.find_element_by_class_name("icon-remove").click()
-    wait.until(EC.alert_is_present)
+    wait.until(EC.alert_is_present())
     alert = driver.switch_to_alert()
-    alert.accept
+    alert.accept()
 
 
     
@@ -195,14 +192,11 @@ def Wishlist():
 url = "http://automationpractice.com/index.php"
 driver.get(url)
 Login()
-#OrderHistory()
-#OrderDetails()
-#OrderMessage()
-#OrderInvoice()
-#CreditSlip()
-#UpdateAddress()
-#AddAndDeleteAddress()
-#UpdatePersonalInfo()
+OrderHistoryAndDetails()
+CreditSlip()
+UpdateAddress()
+AddAndDeleteAddress()
+UpdatePersonalInfo()
 Wishlist()
 Logout()
 driver.close()

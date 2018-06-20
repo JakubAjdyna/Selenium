@@ -4,13 +4,13 @@ My sample tests written in Selenium Python
 
 ## Requirements
 Python  
-Selenium `pip install selenium`  
-Chromedriver `driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")`
+Selenium
+Chromedriver
 
 
 ## How to run
 ### Linux
-Go to script directory and 
+Go to script directory via terminal and type
 `python automationpractice.py`
 
 ### Windows
