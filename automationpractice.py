@@ -147,16 +147,57 @@ def UpdatePersonalInfo():
     driver.find_element_by_name('optin').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/form/fieldset/div[11]/button').click()
 
+def Wishlist():
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
+    #add a new wishlist
+    element = driver.find_element_by_xpath('//*[@id="name"]')
+    element.send_keys('Test wishlist')
+    driver.find_element_by_name('submitWishlist').click()
+    #add a new item to wishlist
+    driver.find_element_by_xpath('//*[@id="best-sellers_block_right"]/div/ul/li[1]/a/img').click()
+    driver.find_element_by_xpath('//*[@id="wishlist_button"]').click()
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a'))
+    driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a').click()
+    #back to wishlist
+    driver.find_element_by_class_name('account').click()
+    driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
+    #view details    details = //*[@id="wishlist_4246"]/td[1]/a   delete = //*[@id="wishlist_4246"]/td[6]/a/i
+    driver.find_element_by_link_text('Test wishlist').click()
+    #change quantity
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="quantity_7_34"]'))
+    elem = driver.find_element_by_xpath('//*[@id="quantity_7_34"]')
+    elem.send_keys('1')
+    #change priority
+    driver.find_element_by_xpath('//*[@id="priority_7_34"]/option[1]').click()
+    #save changes to a product
+    driver.find_element_by_xpath('//*[@id="wlp_7_34"]/div/div[2]/div/div[2]/a/span').click()
+    #send a wishlist
+    driver.find_element_by_xpath('//*[@id="showSendWishlist"]').click()
+    driver.find_element_by_xpath('//*[@id="showSendWishlist"]').click()
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="email1"]'))
+    element = driver.find_element_by_xpath('//*[@id="email1"]')
+    element.send_keys('test@test.pl')
+    driver.find_element_by_xpath('//*[@id="block-order-detail"]/div/form/fieldset/div[11]/button').click()
+    #delete wishlist
+    #wait.until(lambda driver: driver.find_element_by_xpath('//*[contains(@id, 'wishlist_424')]')
+    #driver.find_element_by_xpath("//*[contains(@id, 'wishlist_424')]").click()
+    #alert = driver.switch_to_alert()
+    #alert.accept
+
+
+    
+
 url = "http://automationpractice.com/index.php"
 driver.get(url)
 Login()
-OrderHistory()
-OrderDetails()
-OrderMessage()
-OrderInvoice()
-CreditSlip()
-UpdateAddress()
-AddAndDeleteAddress()
-UpdatePersonalInfo()
+#OrderHistory()
+#OrderDetails()
+#OrderMessage()
+#OrderInvoice()
+#CreditSlip()
+#UpdateAddress()
+#AddAndDeleteAddress()
+#UpdatePersonalInfo()
+Wishlist()
 Logout()
 driver.close()
