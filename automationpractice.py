@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-driver = webdriver.Chrome()
-driver.maximize_window()
+driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+#driver.maximize_window()
 wait = WebDriverWait(driver,10)
 
 def Login():
@@ -155,11 +155,13 @@ def Wishlist():
     driver.find_element_by_name('submitWishlist').click()
     #add a new item to wishlist
     driver.find_element_by_xpath('//*[@id="best-sellers_block_right"]/div/ul/li[1]/a/img').click()
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="wishlist_button"]'))
     driver.find_element_by_xpath('//*[@id="wishlist_button"]').click()
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a'))
     driver.find_element_by_xpath('//*[@id="product"]/div[2]/div/div/a').click()
     #back to wishlist
-    driver.find_element_by_class_name('account').click()
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a'))
+    driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
     #view details    details = //*[@id="wishlist_4246"]/td[1]/a   delete = //*[@id="wishlist_4246"]/td[6]/a/i
     driver.find_element_by_link_text('Test wishlist').click()
@@ -179,10 +181,11 @@ def Wishlist():
     element.send_keys('test@test.pl')
     driver.find_element_by_xpath('//*[@id="block-order-detail"]/div/form/fieldset/div[11]/button').click()
     #delete wishlist
-    #wait.until(lambda driver: driver.find_element_by_xpath('//*[contains(@id, 'wishlist_424')]')
-    #driver.find_element_by_xpath("//*[contains(@id, 'wishlist_424')]").click()
-    #alert = driver.switch_to_alert()
-    #alert.accept
+    wait.until(lambda driver: driver.find_element_by_class_name('icon-remove')
+    content = driver.find_element_by_class_name("icon-remove")
+    content.click()
+    alert = driver.switch_to_alert()
+    alert.accept
 
 
     
