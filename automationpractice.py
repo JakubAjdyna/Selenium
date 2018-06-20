@@ -15,11 +15,11 @@ def Login():
     #going to login page
     driver.find_element_by_class_name("login").click()
     #entering email
-    elem = driver.find_element_by_id("email")
-    elem.send_keys("aydyn@wp.pl")
+    element = driver.find_element_by_id("email")
+    element.send_keys("aydyn@wp.pl")
     #entering password
-    elem = driver.find_element_by_id("passwd")
-    elem.send_keys("Password1#")
+    element = driver.find_element_by_id("passwd")
+    element.send_keys("Password1#")
     #loging in
     driver.find_element_by_name("SubmitLogin").click()
 
@@ -39,8 +39,8 @@ def OrderHistoryAndDetails():
     #sending order message
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]'))
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]').click()
-    elem = driver.find_element_by_name('msgText')
-    elem.send_keys("Test")
+    element = driver.find_element_by_name('msgText')
+    element.send_keys("Test")
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/div/button').click()
 
 def CreditSlip():
@@ -52,9 +52,9 @@ def UpdateAddress():
     driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div[1]/div/div/ul/li[9]/a[1]').click()
-    elem = driver.find_element_by_name("company")
-    elem.clear()
-    elem.send_keys("Test")
+    element = driver.find_element_by_name("company")
+    element.clear()
+    element.send_keys("Test")
     driver.find_element_by_name('submitAddress').click()
 
 def AddAndDeleteAddress():
@@ -65,22 +65,22 @@ def AddAndDeleteAddress():
     #going to new address page
     driver.find_element_by_xpath('//*[@id="center_column"]/div[2]/a').click()
     #adding new address data
-    elem = driver.find_element_by_id('address1')
-    elem.send_keys('Testing St. 1/99')
-    elem = driver.find_element_by_id('city')
-    elem.send_keys('Testigo')
+    element = driver.find_element_by_id('address1')
+    element.send_keys('Testing St. 1/99')
+    element = driver.find_element_by_id('city')
+    element.send_keys('Testigo')
     driver.find_element_by_xpath('//*[@id="id_state"]/option[6]').click()
-    elem = driver.find_element_by_id('postcode')
-    elem.send_keys('00000')
-    elem = driver.find_element_by_id('phone')
-    elem.send_keys('+1555555555')
-    elem = driver.find_element_by_id('phone_mobile')
-    elem.send_keys('+1555555555')
-    elem = driver.find_element_by_id('other')
-    elem.send_keys('Test')
-    elem = driver.find_element_by_name('alias')
-    elem.clear()
-    elem.send_keys('Test address')
+    element = driver.find_element_by_id('postcode')
+    element.send_keys('00000')
+    element = driver.find_element_by_id('phone')
+    element.send_keys('+1555555555')
+    element = driver.find_element_by_id('phone_mobile')
+    element.send_keys('+1555555555')
+    element = driver.find_element_by_id('other')
+    element.send_keys('Test')
+    element = driver.find_element_by_name('alias')
+    element.clear()
+    element.send_keys('Test address')
     driver.find_element_by_id('submitAddress').click()
     #deleting new address
     driver.find_element_by_xpath('//*[@id="center_column"]/div[1]/div/div[2]/ul/li[9]/a[2]/span').click()
@@ -94,23 +94,23 @@ def UpdatePersonalInfo():
     #selecting gender
     driver.find_element_by_id('id_gender2').click()
     #changing name
-    elem = driver.find_element_by_id('firstname')
-    elem.clear()
-    elem.send_keys('Pani')
-    elem = driver.find_element_by_id('lastname')
-    elem.clear()
-    elem.send_keys('Testeer')    
+    element = driver.find_element_by_id('firstname')
+    element.clear()
+    element.send_keys('Pani')
+    element = driver.find_element_by_id('lastname')
+    element.clear()
+    element.send_keys('Testeer')    
     #changing date of birth
     driver.find_element_by_xpath('//*[@id="days"]/option[32]').click()
     driver.find_element_by_xpath('//*[@id="months"]/option[13]').click()
     driver.find_element_by_xpath('//*[@id="years"]/option[40]').click()
     #changing password
-    elem = driver.find_element_by_name('old_passwd')
-    elem.send_keys('Password1#')
-    elem = driver.find_element_by_name('passwd')
-    elem.send_keys('Password#1')
-    elem = driver.find_element_by_name('confirmation')
-    elem.send_keys('Password#1')
+    element = driver.find_element_by_name('old_passwd')
+    element.send_keys('Password1#')
+    element = driver.find_element_by_name('passwd')
+    element.send_keys('Password#1')
+    element = driver.find_element_by_name('confirmation')
+    element.send_keys('Password#1')
     #signing up for mail subscription
     driver.find_element_by_name('newsletter').click()
     driver.find_element_by_name('optin').click()
@@ -123,23 +123,23 @@ def UpdatePersonalInfo():
     #selecting gender 2nd time
     driver.find_element_by_id('id_gender1').click()
     #reverting name change
-    elem = driver.find_element_by_id('firstname')
-    elem.clear()
-    elem.send_keys('Pan')
-    elem = driver.find_element_by_id('lastname')
-    elem.clear()
-    elem.send_keys('Tester')  
+    element = driver.find_element_by_id('firstname')
+    element.clear()
+    element.send_keys('Pan')
+    element = driver.find_element_by_id('lastname')
+    element.clear()
+    element.send_keys('Tester')  
     #reverting date of birth change
     driver.find_element_by_xpath('//*[@id="days"]/option[2]').click()
     driver.find_element_by_xpath('//*[@id="months"]/option[2]').click()
     driver.find_element_by_xpath('//*[@id="years"]/option[30]').click()
     #reverting password change
-    elem = driver.find_element_by_name('old_passwd')
-    elem.send_keys('Password#1')
-    elem = driver.find_element_by_name('passwd')
-    elem.send_keys('Password1#')
-    elem = driver.find_element_by_name('confirmation')
-    elem.send_keys('Password1#')
+    element = driver.find_element_by_name('old_passwd')
+    element.send_keys('Password#1')
+    element = driver.find_element_by_name('passwd')
+    element.send_keys('Password1#')
+    element = driver.find_element_by_name('confirmation')
+    element.send_keys('Password1#')
     #mail subscription sign out
     driver.find_element_by_name('newsletter').click()
     driver.find_element_by_name('optin').click()
@@ -167,8 +167,8 @@ def Wishlist():
     driver.find_element_by_link_text('Test wishlist').click()
     #change quantity
     wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="quantity_7_34"]'))
-    elem = driver.find_element_by_xpath('//*[@id="quantity_7_34"]')
-    elem.send_keys('1')
+    element = driver.find_element_by_xpath('//*[@id="quantity_7_34"]')
+    element.send_keys('1')
     #change priority
     driver.find_element_by_xpath('//*[@id="priority_7_34"]/option[1]').click()
     #save changes to a product
