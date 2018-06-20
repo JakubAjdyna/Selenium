@@ -4,7 +4,7 @@ My sample tests written in Selenium Python
 
 ## Requirements
 Python  
-Selenium
+Selenium  
 Chromedriver
 
 
