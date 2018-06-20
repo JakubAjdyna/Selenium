@@ -2,9 +2,13 @@ import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome()
 driver.maximize_window()
+wait = WebDriverWait(driver,10)
 
 def Login():
     #going to login page
@@ -21,7 +25,7 @@ def Login():
 def Logout():
     #loging out
     driver.find_element_by_class_name("logout").click()
-    time.sleep(3)
+    time.sleep(5)
 
 def OrderHistory():
     #going to account page
@@ -30,23 +34,20 @@ def OrderHistory():
     
 def OrderDetails():
     driver.find_element_by_xpath('//*[@id="order-list"]/tbody/tr[1]/td[7]/a[1]').click()
-    time.sleep(3)
 
 def OrderInvoice():
     driver.find_element_by_xpath('//*[@id="order-list"]/tbody/tr[1]/td[6]/a').click()
-    time.sleep(3)
 
 def OrderMessage():
+    wait.until(lambda driver: driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]'))
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/p[2]/select/option[2]').click()
-    elem = driver.find_element_by_name("msgText")
+    elem = driver.find_element_by_name('msgText')
     elem.send_keys("Test")
     driver.find_element_by_xpath('//*[@id="sendOrderMessage"]/div/button').click()
-    time.sleep(3)
 
 def CreditSlip():
     driver.find_element_by_class_name('account').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[2]/a').click()
-    time.sleep(3)
 
 def UpdateAddress():
     #going to account page
@@ -65,7 +66,6 @@ def AddAndDeleteAddress():
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[1]/ul/li[3]/a').click()
     #going to new address page
     driver.find_element_by_xpath('//*[@id="center_column"]/div[2]/a').click()
-    #entering new address data
     elem = driver.find_element_by_id('address1')
     elem.send_keys('Testing St. 1/99')
     elem = driver.find_element_by_id('city')
@@ -78,7 +78,6 @@ def AddAndDeleteAddress():
     elem.send_keys('+1555555555')
     elem = driver.find_element_by_id('phone_mobile')
     elem.send_keys('+1555555555')
-
     elem = driver.find_element_by_id('other')
     elem.send_keys('Test')
     elem = driver.find_element_by_name('alias')
