@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-driver = webdriver.Chrome()
-#driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+driver = webdriver.Chrome() #uncomment for windows
+#driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver") #uncomment for linux
 driver.maximize_window()
 wait = WebDriverWait(driver,10)
 
@@ -160,7 +160,7 @@ def Wishlist():
     wait.until(lambda driver: driver.find_element_by_class_name('fancybox-close'))
     driver.find_element_by_class_name('fancybox-close').click()
     #back to wishlist
-    time.sleep(1)
+    wait.until(EC.invisibility_of_element_located((By.CLASS_NAME, 'fancybox-overlay')))
     driver.find_element_by_xpath('//*[@id="header"]/div[2]/div/div/nav/div[1]/a').click()
     driver.find_element_by_xpath('//*[@id="center_column"]/div/div[2]/ul/li/a').click()
     #view details
@@ -186,8 +186,6 @@ def Wishlist():
     alert = driver.switch_to_alert()
     alert.accept()
 
-
-    
 
 url = "http://automationpractice.com/index.php"
 driver.get(url)
