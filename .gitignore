@@ -1,0 +1,13 @@
+tests/addAndDeleteAddress.py
+tests/dashboard.py
+tests/creditSlip.py
+tests/login.py
+tests/logout.py
+tests/orderHistoryAndDetails.py
+tests/updateAddress.py
+tests/updatePersonalInfo.py
+tests/wishlist.py
+tests/__pycache__/login.cpython-36.pyc
+tests/__pycache__/logout.cpython-36.pyc
+tests/__pycache__/wishlist.cpython-36.pyc
+.vscode
